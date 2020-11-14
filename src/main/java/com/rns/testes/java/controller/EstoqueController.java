@@ -70,10 +70,9 @@ public class EstoqueController {
 	
 	@DeleteMapping(value = BASE_URL + "trasnfer-product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<Estoque> trasferProduct(@RequestBody FilialDto filial, @RequestBody EstoqueDto estoque){
+	public ResponseEntity<Estoque> trasferProduct(@RequestBody Filial newFilial, @RequestBody EstoqueDto estoque){
 		
-		Long id = filial.getId();
-		estoque.id = id;
+		estoque.setFilial(newFilial);
 		
 		return ResponseEntity.ok(service.update(EstoqueMapper.INSTANCE.dtoToEntity(estoque)));
 		
