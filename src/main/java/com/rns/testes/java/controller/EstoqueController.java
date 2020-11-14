@@ -23,6 +23,7 @@ import com.rns.testes.java.dto.FilialDto;
 import com.rns.testes.java.dto.mapper.EstoqueMapper;
 import com.rns.testes.java.model.Estoque;
 import com.rns.testes.java.model.Filial;
+import com.rns.testes.java.model.Produto;
 import com.rns.testes.java.service.IEstoqueService;
 
 @CrossOrigin
@@ -70,9 +71,11 @@ public class EstoqueController {
 	
 	@DeleteMapping(value = BASE_URL + "trasnfer-product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<Estoque> trasferProduct(@RequestBody Filial newFilial, @RequestBody EstoqueDto estoque){
+	public ResponseEntity<Estoque> trasferProduct(@RequestBody Filial newFilial, @RequestBody EstoqueDto estoque, @RequestBody Produto produto){
 		
-		estoque.setFilial(newFilial);
+		if(produto == estoque.getProduto()){
+			estoque.setFilial(newFilial);
+		}
 		
 		return ResponseEntity.ok(service.update(EstoqueMapper.INSTANCE.dtoToEntity(estoque)));
 		
