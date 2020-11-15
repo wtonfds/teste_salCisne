@@ -84,8 +84,8 @@
 		<dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
-		    <version>1.4.197</version>
-		    <scope>test</scope>
+		    <version>1.4.199</version>
+		    <scope>runtime</scope>
 		</dependency>
         
         <dependency>
@@ -122,7 +122,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.3.3.RELEASE</version>
                 <configuration>
                     <mainClass>com.rns.testes.java.JavaApplication</mainClass>
                 </configuration>

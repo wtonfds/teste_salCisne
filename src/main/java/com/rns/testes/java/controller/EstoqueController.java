@@ -21,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import com.rns.testes.java.dto.EstoqueDto;
 import com.rns.testes.java.dto.FilialDto;
 import com.rns.testes.java.dto.mapper.EstoqueMapper;
+import com.rns.testes.java.dto.mapper.FilialMapper;
 import com.rns.testes.java.model.Estoque;
 import com.rns.testes.java.model.Filial;
 import com.rns.testes.java.model.Produto;
@@ -35,9 +36,6 @@ public class EstoqueController {
 	
 	@Autowired
 	IEstoqueService service;
-	
-	@Autowired
-	Filial filial;
 
 	@GetMapping(value = BASE_URL + "find-all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
@@ -69,11 +67,12 @@ public class EstoqueController {
 		service.delete(id);
 	}
 	
-	@DeleteMapping(value = BASE_URL + "trasnfer-product", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = BASE_URL + "trasnfer-product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
-	public ResponseEntity<Estoque> trasferProduct(@RequestBody Filial newFilial, @RequestBody EstoqueDto estoque, @RequestBody Produto produto){
+	public ResponseEntity<Estoque> trasferProduct(@RequestBody Filial newFilial, Produto produto, @RequestBody EstoqueDto estoque){
 		
 		if(produto == estoque.getProduto()){
+			
 			estoque.setFilial(newFilial);
 		}
 		

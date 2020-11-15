@@ -30,7 +30,7 @@ public class ProdutoController {
 
     @GetMapping(value = BASE_URL + "find-by-id", produces = MediaType.APPLICATION_JSON_VALUE, params = {"id"})
     @ResponseStatus(value = HttpStatus.OK)
-    public ResponseEntity<Produto> findById(@RequestParam(name = "id") String id) {
+    public ResponseEntity<Produto> findById(@RequestParam(name = "id") Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
@@ -48,7 +48,7 @@ public class ProdutoController {
 
     @DeleteMapping(value = BASE_URL + "delete", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
-    public void delete(@RequestParam(name = "id") String id) {
+    public void delete(@RequestParam(name = "id") Long id) {
         service.delete(id);
     }
 

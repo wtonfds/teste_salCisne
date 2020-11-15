@@ -8,5 +8,5 @@ import com.rns.testes.java.service.IProdutoService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProdutoService extends AbstractGenericServicePersistence<IProdutoDao, Produto, String> implements IProdutoService {
+public class ProdutoService extends AbstractGenericServicePersistence<IProdutoDao, Produto, Long> implements IProdutoService {
 }

@@ -12,12 +12,7 @@ import javax.persistence.*;
 @Data
 public class Filial extends GenericEntity<Long> {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
+    @Id
     @GeneratedValue(generator = "FILIAL_SEQ", strategy = GenerationType.SEQUENCE)
     private Long id;
 
