@@ -70,6 +70,11 @@ public class EstoqueController {
 	@PutMapping(value = BASE_URL + "trasnfer-product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<Estoque> trasferProduct(@RequestBody Filial newFilial, Produto produto, @RequestBody EstoqueDto estoque){
+		/*
+		 * neste metodo eu passo a filial nova, o produto que eu quero mudar e o estoque onde ele esta
+		 * vejo se o produto existe no estoque
+		 * e troco a filial antiga pela nova
+		 * */
 		
 		if(produto == estoque.getProduto()){
 			
